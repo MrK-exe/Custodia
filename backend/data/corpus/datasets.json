@@ -1,0 +1,305 @@
+[
+  {
+    "slug": "ds-stock-indicators-main",
+    "title_ar": "مؤشرات سوق الأسهم السوق الرئيسية",
+    "body_ar": "مجموعة بيانات مفتوحة من المنصة الوطنية للبيانات المفتوحة. العنوان الأصلي: Table (6): Stock Market Indicators Q2 2022. الصيغ: XLSX, CSV, JSON, XML.",
+    "doc_type": "dataset",
+    "date": "2022-06-30",
+    "tickers": [],
+    "sectors": [],
+    "source_url": "https://dataportal.asia/dataset_vocab_economy_names-SaudiArabia",
+    "title_en": "Stock Market Indicators — Main Market (TASI)"
+  },
+  {
+    "slug": "ds-stock-indicators-nomu",
+    "title_ar": "مؤشرات سوق الأسهم السوق الموازية نمو",
+    "body_ar": "مجموعة بيانات مفتوحة من المنصة الوطنية للبيانات المفتوحة. العنوان الأصلي: Table (7): Stock Market Indicators Parallel Market (NOMU) Q2 2022. الصيغ: XLSX, CSV, JSON, XML.",
+    "doc_type": "dataset",
+    "date": "2022-06-30",
+    "tickers": [],
+    "sectors": [],
+    "source_url": "https://dataportal.asia/dataset_vocab_economy_names-SaudiArabia",
+    "title_en": "Stock Market Indicators — Nomu Parallel Market"
+  },
+  {
+    "slug": "ds-financial-indicators-main",
+    "title_ar": "المؤشرات المالية للسوق الرئيسية",
+    "body_ar": "مجموعة بيانات مفتوحة من المنصة الوطنية للبيانات المفتوحة. العنوان الأصلي: Table (8): Financial indicators (Main Market) Q2 2022. الصيغ: XLSX, CSV, JSON, XML.",
+    "doc_type": "dataset",
+    "date": "2022-06-30",
+    "tickers": [],
+    "sectors": [],
+    "source_url": "https://dataportal.asia/dataset_vocab_economy_names-SaudiArabia",
+    "title_en": "Financial Indicators — Main Market"
+  },
+  {
+    "slug": "ds-revenue-by-sector",
+    "title_ar": "إجمالي الإيرادات حسب القطاع في السوق الرئيسية",
+    "body_ar": "مجموعة بيانات مفتوحة من المنصة الوطنية للبيانات المفتوحة. العنوان الأصلي: Table (9): Total Revenue By Sector (Main Market) Q2 2022. الصيغ: XLSX, CSV, JSON, XML.",
+    "doc_type": "dataset",
+    "date": "2022-06-30",
+    "tickers": [],
+    "sectors": [],
+    "source_url": "https://dataportal.asia/dataset_vocab_economy_names-SaudiArabia",
+    "title_en": "Total Revenue by Sector — Main Market"
+  },
+  {
+    "slug": "ds-ipo-subscribers",
+    "title_ar": "عدد المكتتبين الأفراد في الطروحات الأولية حسب قناة الاكتتاب",
+    "body_ar": "مجموعة بيانات مفتوحة من المنصة الوطنية للبيانات المفتوحة. العنوان الأصلي: Table (5): Number of Individual Subscribers to IPOs by Subscription Channel Q2 2022. الصيغ: XLSX, CSV, JSON, XML.",
+    "doc_type": "dataset",
+    "date": "2022-06-30",
+    "tickers": [],
+    "sectors": [],
+    "source_url": "https://dataportal.asia/dataset_vocab_economy_names-SaudiArabia",
+    "title_en": "Individual IPO Subscribers by Subscription Channel"
+  },
+  {
+    "slug": "ds-bonds-by-issuer",
+    "title_ar": "قيمة وعدد إصدارات السندات المحلية حسب المصدر",
+    "body_ar": "مجموعة بيانات مفتوحة من المنصة الوطنية للبيانات المفتوحة. العنوان الأصلي: Table (4): Value and Number of Local Bonds Offerings Classified by Issuer. الصيغ: XLSX, CSV, JSON, XML.",
+    "doc_type": "dataset",
+    "date": "2022-06-30",
+    "tickers": [],
+    "sectors": [],
+    "source_url": "https://dataportal.asia/dataset_vocab_economy_names-SaudiArabia",
+    "title_en": "Value and Number of Domestic Bond Issuances by Issuer"
+  },
+  {
+    "slug": "ds-sukuk-offerings",
+    "title_ar": "عدد وقيمة الصكوك المطروحة عبر منصات طرح أدوات الدين",
+    "body_ar": "مجموعة بيانات مفتوحة من المنصة الوطنية للبيانات المفتوحة. العنوان الأصلي: Table (51): Number and Value of Sukuk Offered Through Offering and Debt Instruments. الصيغ: XLSX, CSV, JSON, XML.",
+    "doc_type": "dataset",
+    "date": "2022-06-30",
+    "tickers": [],
+    "sectors": [],
+    "source_url": "https://dataportal.asia/dataset_vocab_economy_names-SaudiArabia",
+    "title_en": "Number and Value of Sukuk Offered via Debt-Instrument Platforms"
+  },
+  {
+    "slug": "ds-crowdfunding",
+    "title_ar": "عدد الشركات والمبالغ المجموعة عبر منصات تمويل الملكية الجماعية",
+    "body_ar": "مجموعة بيانات مفتوحة من المنصة الوطنية للبيانات المفتوحة. العنوان الأصلي: Table (50): Number of Companies and Funds Raised through Equity Crowdfunding. الصيغ: XLSX, CSV, JSON, XML.",
+    "doc_type": "dataset",
+    "date": "2022-06-30",
+    "tickers": [],
+    "sectors": [
+      "التقنية المالية"
+    ],
+    "source_url": "https://dataportal.asia/dataset_vocab_economy_names-SaudiArabia",
+    "title_en": "Companies and Amounts Raised via Equity Crowdfunding Platforms"
+  },
+  {
+    "slug": "ds-fintech-investors",
+    "title_ar": "عدد المستثمرين في شركات التقنية المالية المصرح لها حسب النوع",
+    "body_ar": "مجموعة بيانات مفتوحة من المنصة الوطنية للبيانات المفتوحة. العنوان الأصلي: Table (52): The Number of Investors in FinTech ExPermit Companies by Their Type. الصيغ: XLSX, CSV, JSON, XML.",
+    "doc_type": "dataset",
+    "date": "2022-06-30",
+    "tickers": [],
+    "sectors": [
+      "التقنية المالية"
+    ],
+    "source_url": "https://dataportal.asia/dataset_vocab_economy_names-SaudiArabia",
+    "title_en": "Investors in Authorized FinTech Companies by Type"
+  },
+  {
+    "slug": "ds-general-assemblies",
+    "title_ar": "الجمعيات العامة للشركات المدرجة",
+    "body_ar": "مجموعة بيانات مفتوحة من المنصة الوطنية للبيانات المفتوحة. العنوان الأصلي: Table (49): General Assemblies Q2 2022. الصيغ: XLSX, CSV, JSON, XML.",
+    "doc_type": "dataset",
+    "date": "2022-06-30",
+    "tickers": [],
+    "sectors": [],
+    "source_url": "https://dataportal.asia/dataset_vocab_economy_names-SaudiArabia",
+    "title_en": "General Assemblies of Listed Companies"
+  },
+  {
+    "slug": "ds-board-resignations",
+    "title_ar": "عدد استقالات أعضاء مجالس الإدارة في الشركات المدرجة",
+    "body_ar": "مجموعة بيانات مفتوحة من المنصة الوطنية للبيانات المفتوحة. العنوان الأصلي: Table (48): Number of Resigned Board Director in Listed Companies Q2 2022. الصيغ: XLSX, CSV, JSON, XML.",
+    "doc_type": "dataset",
+    "date": "2022-06-30",
+    "tickers": [],
+    "sectors": [],
+    "source_url": "https://dataportal.asia/dataset_vocab_economy_names-SaudiArabia",
+    "title_en": "Board Member Resignations in Listed Companies"
+  },
+  {
+    "slug": "ds-board-membership",
+    "title_ar": "أعضاء مجالس الإدارة في الشركات المدرجة حسب صفة العضوية",
+    "body_ar": "مجموعة بيانات مفتوحة من المنصة الوطنية للبيانات المفتوحة. العنوان الأصلي: Table (47): Board Directors in Listed Companies Classified by Membership Capacity. الصيغ: XLSX, CSV, JSON, XML.",
+    "doc_type": "dataset",
+    "date": "2022-06-30",
+    "tickers": [],
+    "sectors": [],
+    "source_url": "https://dataportal.asia/dataset_vocab_economy_names-SaudiArabia",
+    "title_en": "Board Members of Listed Companies by Membership Type"
+  },
+  {
+    "slug": "ds-cmi-balance-sheet",
+    "title_ar": "الميزانية المجمعة لمؤسسات السوق المالية",
+    "body_ar": "مجموعة بيانات مفتوحة من المنصة الوطنية للبيانات المفتوحة. العنوان الأصلي: Table (46): Aggregated Balance Sheet For Capital Market Institutions Q2 2022. الصيغ: XLSX, CSV, JSON, XML.",
+    "doc_type": "dataset",
+    "date": "2022-06-30",
+    "tickers": [],
+    "sectors": [],
+    "source_url": "https://dataportal.asia/dataset_vocab_economy_names-SaudiArabia",
+    "title_en": "Consolidated Balance Sheet of Capital Market Institutions"
+  },
+  {
+    "slug": "ds-cmi-income",
+    "title_ar": "قائمة الدخل المجمعة لمؤسسات السوق المالية",
+    "body_ar": "مجموعة بيانات مفتوحة من المنصة الوطنية للبيانات المفتوحة. العنوان الأصلي: Table (45): Aggregated Income Statement For Capital Market Institutions Q2 2022. الصيغ: XLSX, CSV, JSON, XML.",
+    "doc_type": "dataset",
+    "date": "2022-06-30",
+    "tickers": [],
+    "sectors": [],
+    "source_url": "https://dataportal.asia/dataset_vocab_economy_names-SaudiArabia",
+    "title_en": "Consolidated Income Statement of Capital Market Institutions"
+  },
+  {
+    "slug": "ds-custody-assets",
+    "title_ar": "الأصول تحت نشاط الحفظ لدى مؤسسات السوق المالية",
+    "body_ar": "مجموعة بيانات مفتوحة من المنصة الوطنية للبيانات المفتوحة. العنوان الأصلي: Table (44): Assets Under Custodial Activity at the Financial Market Institutions. الصيغ: XLSX, CSV, JSON, XML.",
+    "doc_type": "dataset",
+    "date": "2022-06-30",
+    "tickers": [],
+    "sectors": [],
+    "source_url": "https://dataportal.asia/dataset_vocab_economy_names-SaudiArabia",
+    "title_en": "Assets Under Custody at Capital Market Institutions"
+  },
+  {
+    "slug": "ds-dpm-assets",
+    "title_ar": "عدد وقيم أصول المحافظ المدارة بصلاحية التصرف",
+    "body_ar": "مجموعة بيانات مفتوحة من المنصة الوطنية للبيانات المفتوحة. العنوان الأصلي: Table (43): Number and Total Assets Values of Discretionary Portfolio Management. الصيغ: XLSX, CSV, JSON, XML.",
+    "doc_type": "dataset",
+    "date": "2022-06-30",
+    "tickers": [],
+    "sectors": [],
+    "source_url": "https://dataportal.asia/dataset_vocab_economy_names-SaudiArabia",
+    "title_en": "Number and Value of Discretionary Portfolio Management Assets"
+  },
+  {
+    "slug": "ds-traded-values-geo",
+    "title_ar": "قيم التداول عبر الأشخاص المرخص لهم مصنفة جغرافيا",
+    "body_ar": "مجموعة بيانات مفتوحة من المنصة الوطنية للبيانات المفتوحة. العنوان الأصلي: Traded Values by Authorized Persons in Stock Markets Classified Geographically (2015-2019). الصيغ: XLSX, CSV, JSON, XML.",
+    "doc_type": "dataset",
+    "date": "2019-12-31",
+    "tickers": [],
+    "sectors": [],
+    "source_url": "https://dataportal.asia/dataset_vocab_economy_names-Saudi-Arabia-groups-econm",
+    "title_en": "Traded Values via Authorized Persons by Geography"
+  },
+  {
+    "slug": "ds-public-fund-investments",
+    "title_ar": "قيم استثمارات الصناديق العامة في الأصول المحلية والأجنبية",
+    "body_ar": "مجموعة بيانات مفتوحة من المنصة الوطنية للبيانات المفتوحة. العنوان الأصلي: Values of Public Fund Investments in Domestic and Foreign Assets (2013-2019). الصيغ: XLSX, CSV, JSON, XML.",
+    "doc_type": "dataset",
+    "date": "2019-12-31",
+    "tickers": [],
+    "sectors": [],
+    "source_url": "https://dataportal.asia/dataset_vocab_economy_names-Saudi-Arabia-groups-econm",
+    "title_en": "Public Fund Investments in Domestic and Foreign Assets"
+  },
+  {
+    "slug": "ds-public-offerings",
+    "title_ar": "الطروحات العامة للأوراق المالية",
+    "body_ar": "مجموعة بيانات مفتوحة من المنصة الوطنية للبيانات المفتوحة. العنوان الأصلي: Securities Public Offerings (2013-2019). الصيغ: XLSX, CSV, JSON, XML.",
+    "doc_type": "dataset",
+    "date": "2019-12-31",
+    "tickers": [],
+    "sectors": [],
+    "source_url": "https://dataportal.asia/dataset_vocab_economy_names-Saudi-Arabia-groups-econm",
+    "title_en": "Public Offerings of Securities"
+  },
+  {
+    "slug": "ds-private-placements",
+    "title_ar": "الطروحات الخاصة للأوراق المالية",
+    "body_ar": "مجموعة بيانات مفتوحة من المنصة الوطنية للبيانات المفتوحة. العنوان الأصلي: Securities Private Placements (2013-2019). الصيغ: XLSX, CSV, JSON, XML.",
+    "doc_type": "dataset",
+    "date": "2019-12-31",
+    "tickers": [],
+    "sectors": [],
+    "source_url": "https://dataportal.asia/dataset_vocab_economy_names-Saudi-Arabia-groups-econm",
+    "title_en": "Private Placements of Securities"
+  },
+  {
+    "slug": "ds-sukuk-local-issuers",
+    "title_ar": "قيمة وعدد إصدارات الصكوك المحلية حسب المصدر",
+    "body_ar": "مجموعة بيانات مفتوحة من المنصة الوطنية للبيانات المفتوحة. العنوان الأصلي: Value and Number of Local Sukuk Offerings Classified by Issuer (2015-2019). الصيغ: XLSX, CSV, JSON, XML.",
+    "doc_type": "dataset",
+    "date": "2019-12-31",
+    "tickers": [],
+    "sectors": [],
+    "source_url": "https://dataportal.asia/dataset_vocab_economy_names-Saudi-Arabia-groups-econm",
+    "title_en": "Value and Number of Domestic Sukuk Issuances by Issuer"
+  },
+  {
+    "slug": "ds-imports-by-product",
+    "title_ar": "إجمالي قيمة الواردات حسب المنتج 2008-2018",
+    "body_ar": "مجموعة بيانات مفتوحة من المنصة الوطنية للبيانات المفتوحة. العنوان الأصلي: Total imports value by product 2008 to 2018. الصيغ: XLSX, CSV, JSON, XML.",
+    "doc_type": "dataset",
+    "date": "2018-12-31",
+    "tickers": [],
+    "sectors": [],
+    "source_url": "https://dataportal.asia/dataset_vocab_economy_names-Saudi-Arabia-groups-econm",
+    "title_en": "Total Value of Imports by Product 2008-2018"
+  },
+  {
+    "slug": "ds-nonoil-exports",
+    "title_ar": "إجمالي قيمة الصادرات غير النفطية حسب المنتج 2008-2018",
+    "body_ar": "مجموعة بيانات مفتوحة من المنصة الوطنية للبيانات المفتوحة. العنوان الأصلي: Total non oil exports value by product 2008 to 2018. الصيغ: XLSX, CSV, JSON, XML.",
+    "doc_type": "dataset",
+    "date": "2018-12-31",
+    "tickers": [],
+    "sectors": [],
+    "source_url": "https://dataportal.asia/dataset_vocab_economy_names-Saudi-Arabia-groups-econm",
+    "title_en": "Total Value of Non-Oil Exports by Product 2008-2018"
+  },
+  {
+    "slug": "ds-shareholders-equity-sector",
+    "title_ar": "حقوق المساهمين حسب القطاع في السوق الرئيسية",
+    "body_ar": "مجموعة بيانات مفتوحة من المنصة الوطنية للبيانات المفتوحة. العنوان الأصلي: Shareholders Equity By Sector in Main Market (2017-2019). الصيغ: XLSX.",
+    "doc_type": "dataset",
+    "date": "2019-12-31",
+    "tickers": [],
+    "sectors": [],
+    "source_url": "https://dataportal.asia/dataset_vocab_economy_names-Saudi-Arabia-groups-econm",
+    "title_en": "Shareholders' Equity by Sector — Main Market"
+  },
+  {
+    "slug": "ds-living-expenses",
+    "title_ar": "مؤشرات تكاليف المعيشة 2001-2017",
+    "body_ar": "مجموعة بيانات مفتوحة من المنصة الوطنية للبيانات المفتوحة. العنوان الأصلي: Living Expenses Indicators (2001-2017). الصيغ: XLS, CSV, JSON, XML.",
+    "doc_type": "dataset",
+    "date": "2017-12-31",
+    "tickers": [],
+    "sectors": [],
+    "source_url": "https://dataportal.asia/dataset_vocab_economy_names-Saudi-Arabia-groups-econm",
+    "title_en": "Cost of Living Indicators 2001-2017"
+  },
+  {
+    "slug": "ds-ksa-exports",
+    "title_ar": "صادرات المملكة 2000-2012",
+    "body_ar": "مجموعة بيانات مفتوحة من المنصة الوطنية للبيانات المفتوحة. العنوان الأصلي: KSA Exports (2000-2012). الصيغ: XLS, CSV, JSON, XML.",
+    "doc_type": "dataset",
+    "date": "2012-12-31",
+    "tickers": [],
+    "sectors": [],
+    "source_url": "https://dataportal.asia/dataset_vocab_economy_names-Saudi-Arabia-groups-econm",
+    "title_en": "Saudi Arabia Exports 2000-2012"
+  },
+  {
+    "slug": "ds-sdb-services",
+    "title_ar": "إحصائيات الخدمات الإلكترونية لبنك التنمية الاجتماعية",
+    "body_ar": "مجموعة بيانات مفتوحة من المنصة الوطنية للبيانات المفتوحة. العنوان الأصلي: Statistics of e-services provided by the Social Development Bank. الصيغ: XLSX, CSV, JSON, XML.",
+    "doc_type": "dataset",
+    "date": "2021-12-31",
+    "tickers": [],
+    "sectors": [
+      "البنوك"
+    ],
+    "source_url": "https://dataportal.asia/dataset_vocab_economy_names-SaudiArabia",
+    "title_en": "Social Development Bank E-Services Statistics"
+  }
+]

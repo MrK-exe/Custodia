@@ -1,0 +1,10 @@
+beautifulsoup4==4.15.0
+chromadb==1.5.9
+fastapi==0.139.2
+fastembed==0.8.0
+feedparser==6.0.12
+pandas==3.0.3
+python-dotenv==1.2.2
+requests==2.34.2
+sahmk==0.12.1
+uvicorn==0.51.0

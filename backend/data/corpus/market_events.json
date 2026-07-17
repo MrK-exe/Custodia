@@ -1,0 +1,48 @@
+[
+  {
+    "slug": "msci-inclusion-2019",
+    "title_ar": "اكتمال انضمام السوق السعودية إلى مؤشر مورغان ستانلي للأسواق الناشئة",
+    "body_ar": "انضمت السوق المالية السعودية إلى مؤشر مورغان ستانلي إم إس سي آي للأسواق الناشئة على شريحتين في 29 مايو و29 أغسطس 2019، بوزن بلغ نحو 2.8 بالمئة من القيمة السوقية للمؤشر عند الاكتمال. جذب الانضمام تدفقات مؤسسية أجنبية قياسية إلى تداول وعزز حضور السوق السعودية على خارطة المستثمرين العالميين، بعد إصلاحات شملت فتح السوق للمستثمرين الأجانب المؤهلين وتطوير البنية التشغيلية.",
+    "doc_type": "news",
+    "date": "2019-08-29",
+    "tickers": [],
+    "sectors": [],
+    "source_url": "https://www.prnewswire.com/news-releases/tadawul-completes-msci-emerging-market-index-inclusion-300909170.html",
+    "title_en": "Saudi market completes inclusion in the MSCI Emerging Markets Index"
+  },
+  {
+    "slug": "ftse-inclusion-2019",
+    "title_ar": "بدء انضمام السوق السعودية إلى مؤشر فوتسي راسل للأسواق الناشئة",
+    "body_ar": "بدأت السوق المالية السعودية الانضمام إلى مؤشر فوتسي راسل للأسواق الناشئة في مارس 2019 على خمس مراحل، إلى جانب انضمامها لمؤشرات ستاندرد آند بورز داو جونز. شكل ذلك مع انضمام مورغان ستانلي لاحقا عام الاعتراف المؤسسي بالسوق السعودية، وفتح الباب أمام صناديق المؤشرات العالمية لتخصيص تدفقات منتظمة نحو الأسهم السعودية.",
+    "doc_type": "news",
+    "date": "2019-03-18",
+    "tickers": [],
+    "sectors": [],
+    "source_url": "https://www.prnewswire.com/ae/news-releases/saudi-arabia-inclusion-to-ftse-russell-and-s-amp-p-dow-jones-into-emerging-market-indices-886264629.html",
+    "title_en": "Saudi market begins inclusion in the FTSE Russell Emerging Markets Index"
+  },
+  {
+    "slug": "nomu-launch-2017",
+    "title_ar": "إطلاق السوق الموازية نمو",
+    "body_ar": "أطلقت تداول السوق الموازية نمو في فبراير 2017 سوقا للأسهم بمتطلبات إدراج مخففة موجهة للشركات الصغيرة والمتوسطة، والتداول فيها مقصور على المستثمرين المؤهلين. وفرت نمو قناة تمويل وإدراج بديلة، وتطورت لاحقا بتعديلات هيكلية وإتاحة الانتقال إلى السوق الرئيسية، وشهدت إدراجات بارزة من بينها أول إدراج لشركة ناشئة محلية في 2022.",
+    "doc_type": "news",
+    "date": "2017-02-26",
+    "tickers": [],
+    "sectors": [],
+    "source_url": "https://www.saudiexchange.sa/wps/portal/saudiexchange/rules-guidance/capital-market-overview/Equities",
+    "title_en": "Launch of the Nomu Parallel Market"
+  },
+  {
+    "slug": "energy-ipos-h1-2026",
+    "title_ar": "شركات الطاقة تجمع 12.6 مليار دولار من الاكتتابات في النصف الأول من 2026",
+    "body_ar": "أظهرت بيانات ديلوجيك أن شركات الطاقة جمعت نحو 12.6 مليار دولار من الطروحات الأولية عالميا خلال النصف الأول من 2026، في مؤشر على عودة شهية الاكتتابات في القطاع. يتقاطع ذلك مع نشاط سوق الطروحات السعودية الذي حافظ على زخمه عبر إدراجات في السوق الرئيسية ونمو، ويظل قطاع الطاقة مرجحا لوزن السوق السعودية في المنطقة.",
+    "doc_type": "news",
+    "date": "2026-07-14",
+    "tickers": [],
+    "sectors": [
+      "الطاقة"
+    ],
+    "source_url": "https://www.argaam.com/ar/article/articledetail/id/1920738",
+    "title_en": "Energy companies raise $12.6B from IPOs in the first half of 2026"
+  }
+]
