@@ -4,3 +4,7 @@
 # internal review docs - keep local, not for public repo
 COUNCIL-REVIEW.md
 COUNCIL-REVIEW-FINAL.md
+
+# internal design mockups & preview landing - not for the public repo
+/index.html
+frontend/public/design-tests/
