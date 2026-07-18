@@ -1,0 +1,1 @@
+{"id": 2, "persona": {"id": 2, "name_ar": "خالد العتيبي", "name_en": "Khalid Alotaibi", "role_ar": "مدير محفظة", "role_en": "Portfolio manager"}, "messages": [{"id": 2, "sender": "persona", "body": "أتابع نتائج الربع الثاني. شاركني أي إفصاح مهم.", "doc_id": null, "created_at": 1784125885, "document": null}], "sample": true}
