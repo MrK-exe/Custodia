@@ -34,13 +34,9 @@ export default function StatusStrip({ lang, variant }: { lang: Lang; variant: "b
 
   if (variant === "foot") {
     return (
-      <>
-        <span className="ok">● {t.connected}</span>
-        <span>{t.workspace}: {t.terminal}</span>
-        <span className="end mono">
-          {docs} {t.docsIndexed} · {t.updatedNow}
-        </span>
-      </>
+      <span className="end mono">
+        {docs} {t.docsIndexed} · {t.updatedNow}
+      </span>
     );
   }
 

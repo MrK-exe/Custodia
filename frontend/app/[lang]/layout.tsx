@@ -4,6 +4,7 @@ import "../globals.css";
 import { dict, isLang } from "@/lib/dict";
 import LangToggle from "@/components/LangToggle";
 import StatusStrip from "@/components/StatusStrip";
+import { nav } from "@/lib/format";
 
 export const dynamicParams = false;
 
@@ -38,17 +39,17 @@ export default async function LangLayout({
         {/* dark status bar */}
         <header className="statusbar">
           <div className="statusbar-inner">
-            <a href={`/${lang}`} className="logo" style={{ textDecoration: "none", color: "inherit" }}>
-              <span className="mark">ت</span>
+            <a href={nav(`/${lang}`)} className="logo" style={{ textDecoration: "none", color: "inherit" }}>
+              <span className="mark">C</span>
               <span className="nm">{t.brandName}</span>
               <span className="sub">/ {t.terminal}</span>
             </a>
             <span className="dotsep">·</span>
             <StatusStrip lang={lang} variant="bar" />
             <div className="right">
-              <a href={`/${lang}/dm`} className="navlink">{t.dm}</a>
+              <a href={nav(`/${lang}/dm`)} className="navlink">{t.dm}</a>
               <LangToggle lang={lang} />
-              <span className="avatar">{lang === "ar" ? "مب" : "IN"}</span>
+              <a href={nav(`/${lang}/account`)} className="avatar" title={t.account.heading} aria-label={t.account.heading}>{lang === "ar" ? "مب" : "IN"}</a>
             </div>
           </div>
         </header>

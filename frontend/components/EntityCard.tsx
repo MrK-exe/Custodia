@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { api, type Company, type Envelope, type NewsDoc } from "@/lib/api";
 import { dict } from "@/lib/dict";
-import { formatDate, formatNumber, formatPercent, type Lang, docTitle } from "@/lib/format";
+import { formatDate, formatNumber, formatPercent, type Lang, docTitle, nav } from "@/lib/format";
 import HonestyBadge from "./HonestyBadge";
 
 export default function EntityCard({ entity, lang }: { entity: Company; lang: Lang }) {
@@ -17,7 +17,7 @@ export default function EntityCard({ entity, lang }: { entity: Company; lang: La
     setNews(null);
     setQuote(null);
     setQuoteFailed(false);
-    api.news(entity.ticker).then((d) => live && setNews(d.documents)).catch(() => live && setNews([]));
+    api.news(entity.ticker, lang).then((d) => live && setNews(d.documents)).catch(() => live && setNews([]));
     api.quote(entity.ticker).then((q) => live && setQuote(q)).catch(() => live && setQuoteFailed(true));
     return () => {
       live = false;
@@ -41,7 +41,7 @@ export default function EntityCard({ entity, lang }: { entity: Company; lang: La
         <div>
           <div className="entity-sector">{t.sector}: {lang === "ar" ? entity.sector_ar : entity.sector_en}</div>
           <a className="ask-btn" style={{ height: 30, marginTop: 8, textDecoration: "none", display: "inline-flex" }}
-             href={`/${lang}/company/${entity.ticker}`}>
+             href={nav(`/${lang}/company/${entity.ticker}`)}>
             {t.openDashboard} ›
           </a>
         </div>

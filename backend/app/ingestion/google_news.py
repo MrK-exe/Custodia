@@ -93,3 +93,73 @@ def ingest_feeds() -> list[dict]:
     if failures and not inserted:
         raise RuntimeError(f"all {failures} google news feeds failed")
     return inserted
+
+# --- English feed (real English-language wires; no machine translation) ----------
+FEED_URL_EN = "https://news.google.com/rss/search?q={q}&hl=en-US&gl=US&ceid=US:en"
+QUERY_EN = {
+    "2222": "Saudi Aramco",
+    "1120": "Al Rajhi Bank Saudi",
+    "7010": "STC Saudi Telecom",
+    "2010": "SABIC Saudi",
+    "1180": "Saudi National Bank SNB",
+    "2280": "Almarai Saudi",
+    "4013": "Dr Sulaiman Al Habib Medical",
+    "1211": "Maaden Saudi Arabian Mining",
+}
+TOPIC_QUERIES_EN = [
+    "Saudi stock market Tadawul TASI",
+    "Saudi Capital Market Authority CMA",
+    "Saudi Arabia IPO listing Tadawul",
+    "Saudi oil OPEC exports",
+]
+
+
+def _queries_en() -> list[str]:
+    company = [QUERY_EN.get(t, info["name_en"]) for t, info in aliases.COMPANIES.items()]
+    return company + TOPIC_QUERIES_EN
+
+
+def _fetch_feed_en(query: str):
+    response = requests.get(
+        FEED_URL_EN.format(q=quote(query)),
+        headers={"User-Agent": USER_AGENT},
+        timeout=FEED_TIMEOUT_SECONDS,
+    )
+    response.raise_for_status()
+    feed = feedparser.parse(response.text)
+    if feed.bozo and not feed.entries:
+        raise ValueError(f"unparseable EN feed for query {query!r}: {feed.bozo_exception}")
+    return feed
+
+
+def _entry_doc_en(entry) -> dict | None:
+    doc = _entry_doc(entry)
+    if doc is None:
+        return None
+    doc["source"] = "google_news_en"
+    doc["title_en"] = doc["title"]  # title is already English -> renders on /en
+    return doc
+
+
+def ingest_feeds_en() -> list[dict]:
+    """Same mechanism as ingest_feeds, English locale. Feed-only (not embedded)."""
+    inserted: list[dict] = []
+    failures = 0
+    for query in _queries_en():
+        try:
+            feed = _fetch_feed_en(query)
+        except Exception:
+            failures += 1
+            continue
+        with db.connect() as conn:
+            for entry in feed.entries[:MAX_ITEMS_PER_FEED]:
+                doc = _entry_doc_en(entry)
+                if doc is None:
+                    continue
+                row_id = db.insert_document(conn, doc)
+                if row_id is not None:
+                    inserted.append({**doc, "id": row_id})
+        time.sleep(0.5)
+    if failures and not inserted:
+        raise RuntimeError(f"all {failures} english google news feeds failed")
+    return inserted

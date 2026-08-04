@@ -8,3 +8,9 @@ COUNCIL-REVIEW-FINAL.md
 # internal design mockups & preview landing - not for the public repo
 /index.html
 frontend/public/design-tests/
+
+# local run artifacts (not for the repo)
+cloudflared.exe
+tunnel.log
+public-url.txt
+frontend/out/

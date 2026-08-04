@@ -175,6 +175,7 @@ def documents_by_ticker(
     ticker: str,
     limit: int = 20,
     exclude_types: tuple[str, ...] = NEWS_FEED_EXCLUDED_TYPES,
+    lang: str = "ar",
 ) -> list[dict]:
     if not _TICKER_RE.match(ticker):
         return []
@@ -183,6 +184,8 @@ def documents_by_ticker(
     if exclude_types:
         clause = f" AND doc_type NOT IN ({','.join('?' * len(exclude_types))})"
         params.extend(exclude_types)
+    # /en shows only English-renderable docs; /ar hides the English-only feed.
+    clause += " AND title_en IS NOT NULL" if lang == "en" else " AND source != 'google_news_en'"
     params.append(limit)
     rows = conn.execute(
         f"""SELECT * FROM documents

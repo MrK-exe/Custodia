@@ -1,11 +1,17 @@
 import dataclasses
 import json
+import os
 import threading
 import time
 from datetime import date, datetime, timedelta, timezone
 
 from ..config import SAHMK_API_KEY
 from ..storage import db
+
+# Public/demo mode: when DEMO_CACHE_ONLY=1, the engine NEVER calls the live
+# SAHMK feed. It serves whatever is cached (stale-flagged) so a public URL
+# cannot burn the 100/day quota. Read once at import; set it before startup.
+CACHE_ONLY = os.getenv("DEMO_CACHE_ONLY") == "1"
 
 AST = timezone(timedelta(hours=3))
 TRADING_WEEKDAYS = {6, 0, 1, 2, 3}  # Sun-Thu (Python: Mon=0 .. Sun=6)
@@ -154,6 +160,11 @@ def _cached(key: str, fetch, ttl: timedelta = TTL) -> dict:
     payload, fetched_at = _cache_get(key)
     if payload is not None and _is_fresh(fetched_at, ttl):
         return _envelope(payload, "cache", False, fetched_at)
+    if CACHE_ONLY:
+        # public/demo mode: never spend the live budget
+        if payload is not None:
+            return _envelope(payload, "cache", True, fetched_at)
+        raise SahmkError(f"{key}: cache-only mode is on and nothing is cached")
     if requests_today() >= BUDGET_SOFT_LIMIT:
         # Out of budget: serve stale and say so, rather than throwing on stage.
         if payload is not None:

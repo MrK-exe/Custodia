@@ -1,12 +1,14 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { api, type ResearchData } from "@/lib/api";
 import { dict } from "@/lib/dict";
-import { formatDate, type Lang, docTitle } from "@/lib/format";
+import { formatDate, type Lang, docTitle, nav } from "@/lib/format";
 
-export default function ResearchView({ query, lang }: { query: string; lang: Lang }) {
+export default function ResearchView({ lang }: { lang: Lang }) {
   const t = dict[lang];
+  const query = useSearchParams().get("q") ?? "";
   const [d, setD] = useState<ResearchData | null>(null);
   const [error, setError] = useState<string | null>(null);
 
@@ -42,7 +44,7 @@ export default function ResearchView({ query, lang }: { query: string; lang: Lan
       {/* research header */}
       <section className="col-12 tpanel priority">
         <header className="tpanel-head">
-          <a href={`/${lang}`} style={{ color: "var(--grey-light)", fontSize: 12 }}>‹ {t.backToSearch}</a>
+          <a href={nav(`/${lang}`)} style={{ color: "var(--grey-light)", fontSize: 12 }}>‹ {t.backToSearch}</a>
           <h3 className="tpanel-title">{t.deepResearch}</h3>
           <span className="tpanel-sub">· “{d.query}” · {d.result_count} {t.documents}</span>
         </header>
@@ -73,7 +75,7 @@ export default function ResearchView({ query, lang }: { query: string; lang: Lan
           <header className="tpanel-head"><h3 className="tpanel-title">{t.companiesInvolved}</h3></header>
           <div className="tpanel-body">
             {d.entities.map((e) => (
-              <a key={e.ticker} href={`/${lang}/company/${e.ticker}`} className="kv" style={{ color: "inherit", textDecoration: "none" }}>
+              <a key={e.ticker} href={nav(`/${lang}/company/${e.ticker}`)} className="kv" style={{ color: "inherit", textDecoration: "none" }}>
                 <span className="kv-k"><span className="mono" style={{ fontWeight: 600 }}>{e.ticker}</span> {lang === "ar" ? e.name_ar : e.name_en}</span>
                 <span className="kv-v mono">{e.count}</span>
               </a>

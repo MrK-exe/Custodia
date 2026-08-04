@@ -1,0 +1,69 @@
+{
+  "_meta": {
+    "purpose": "Curated company fundamentals for the company terminal (Variant C). Every value is either sourced (see per-company `sources` + `as_of`) or null. Nulls are honest gaps, never guesses. Derived fields note their formula. No machine translation, no fabricated figures.",
+    "currency": "SAR",
+    "last_reviewed": "2026-07-18",
+    "status": "stc fully sourced; remaining 7 scaffolded (values null) pending sourcing on build go-ahead"
+  },
+  "7010": {
+    "ticker": "7010",
+    "name_en": "stc",
+    "name_ar": "إس تي سي",
+    "isin": "SA0007879089",
+    "xref": ["7010.SR", "TADAWUL:7010"],
+    "sector_en": "Telecommunication Services",
+    "as_of": "2026-Q1 quote 2026-07-17",
+    "sources": [
+      "Argaam EN company page (argaam.com/en/tadawul/tasi/stc)",
+      "Tadawul (delayed quote via SAHMK)",
+      "Company FY2025 and Q1 2026 filings"
+    ],
+    "market": {
+      "last_price_sar": 43.18,
+      "market_cap_sar": 215900000000,
+      "shares_outstanding": 5000000000,
+      "paid_up_capital_sar": 50000000000,
+      "par_value_sar": 10.0,
+      "fifty_two_week_high_sar": null,
+      "fifty_two_week_low_sar": null,
+      "beta_vs_tasi": null
+    },
+    "valuation": {
+      "eps_ttm_sar": 2.97,
+      "pe": 14.5,
+      "_pe_note": "price 43.18 / FY2025 EPS 2.97; on FY2024 EPS 2.15 the trailing P/E is ~20x",
+      "dividend_yield_on_price": 0.051,
+      "dividend_pct_of_par": 0.055,
+      "dividend_per_share_quarterly_sar": 0.55,
+      "dividend_per_share_annual_sar": 2.20,
+      "_dps_annual_note": "indicative: 4 x Q1'26 declared 0.55; actual annual varies by quarter",
+      "payout_ratio": 0.74,
+      "_payout_note": "derived: annual DPS 2.20 / EPS 2.97"
+    },
+    "financials_sar_bn": {
+      "revenue": { "2023": 72.4, "2024": 74.0, "2025": 75.6 },
+      "_revenue_note": "reported annual revenue; 2023-2024 approximate",
+      "net_profit": { "2025": 14.83, "Q1_2026": 3.70 },
+      "net_margin_approx": 0.20
+    },
+    "ownership": {
+      "pif_pct": 0.64,
+      "float_pct": 0.36,
+      "foreign_ownership_limit": 0.49,
+      "current_foreign_ownership": null,
+      "qfi_eligible": true
+    },
+    "returns": {
+      "ytd": 0.0047,
+      "twelve_month": 0.0355
+    },
+    "peers": ["7020", "7030"]
+  },
+  "2222": { "ticker": "2222", "name_en": "Saudi Aramco", "name_ar": "أرامكو السعودية", "sector_en": "Energy", "as_of": null, "sources": [], "market": {}, "valuation": {}, "financials_sar_bn": {}, "ownership": {}, "returns": {}, "_status": "source pending" },
+  "1120": { "ticker": "1120", "name_en": "Al Rajhi Bank", "name_ar": "مصرف الراجحي", "sector_en": "Banks", "as_of": null, "sources": [], "market": {}, "valuation": {}, "financials_sar_bn": {}, "ownership": {}, "returns": {}, "_status": "source pending" },
+  "2010": { "ticker": "2010", "name_en": "SABIC", "name_ar": "سابك", "sector_en": "Materials", "as_of": null, "sources": [], "market": {}, "valuation": {}, "financials_sar_bn": {}, "ownership": {}, "returns": {}, "_status": "source pending" },
+  "1180": { "ticker": "1180", "name_en": "Saudi National Bank", "name_ar": "البنك الأهلي السعودي", "sector_en": "Banks", "as_of": null, "sources": [], "market": {}, "valuation": {}, "financials_sar_bn": {}, "ownership": {}, "returns": {}, "_status": "source pending" },
+  "2280": { "ticker": "2280", "name_en": "Almarai", "name_ar": "المراعي", "sector_en": "Consumer Staples", "as_of": null, "sources": [], "market": {}, "valuation": {}, "financials_sar_bn": {}, "ownership": {}, "returns": {}, "_status": "source pending" },
+  "4013": { "ticker": "4013", "name_en": "Dr. Sulaiman Al Habib", "name_ar": "سليمان الحبيب", "sector_en": "Health Care", "as_of": null, "sources": [], "market": {}, "valuation": {}, "financials_sar_bn": {}, "ownership": {}, "returns": {}, "_status": "source pending" },
+  "1211": { "ticker": "1211", "name_en": "Maaden", "name_ar": "معادن", "sector_en": "Materials", "as_of": null, "sources": [], "market": {}, "valuation": {}, "financials_sar_bn": {}, "ownership": {}, "returns": {}, "_status": "source pending" }
+}

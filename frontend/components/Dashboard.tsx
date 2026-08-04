@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { api, type Dashboard as DashData } from "@/lib/api";
 import { dict } from "@/lib/dict";
-import { formatDate, formatNumber, type Lang, docTitle } from "@/lib/format";
+import { formatDate, formatNumber, type Lang, docTitle, nav } from "@/lib/format";
 import { Sparkline, Heatmap } from "./Charts";
 
 export default function Dashboard({ lang }: { lang: Lang }) {
@@ -12,7 +12,7 @@ export default function Dashboard({ lang }: { lang: Lang }) {
   const [failed, setFailed] = useState(false);
 
   useEffect(() => {
-    api.dashboard().then(setD).catch(() => setFailed(true));
+    api.dashboard(lang).then(setD).catch(() => setFailed(true));
   }, []);
 
   if (failed) return <div className="col-12 empty" style={{ textAlign: "center" }}>{t.error}</div>;
@@ -32,38 +32,10 @@ export default function Dashboard({ lang }: { lang: Lang }) {
     );
   }
 
-  const company = (ticker: string) => `/${lang}/company/${ticker}`;
+  const company = (ticker: string) => nav(`/${lang}/company/${ticker}`);
 
   return (
     <>
-      {/* MARKET PULSE — real, derived by counting, no generated prose */}
-      <section className="col-12 brief-hero">
-        <div className="brief-glow" />
-        <div className="brief-grid">
-          <div className="brief-main">
-            <div className="brief-badgerow">
-              <span className="brief-badge">{t.marketPulse}</span>
-              <span className="brief-when">{t.brandName} · {formatDate(Math.floor(Date.now() / 1000), lang)}</span>
-            </div>
-            <h2 className="brief-headline">{t.pulseHeadline}</h2>
-            <ul className="brief-bullets">
-              {d.brief.latest.slice(0, 4).map((n) => (
-                <li key={n.id}>
-                  <span className="arw">›</span>
-                  {n.url ? <a href={n.url} target="_blank" rel="noopener noreferrer">{docTitle(n, lang)}</a> : docTitle(n, lang)}
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="brief-side">
-            <div className="brief-side-h">{t.tracked}</div>
-            <div className="brief-stat"><span className="mono pos">{formatNumber(d.brief.total_documents, lang, 0)}</span> {t.docsIndexed}</div>
-            <div className="brief-stat"><span className="mono" style={{ color: "var(--amber)" }}>{formatNumber(d.brief.tagged_documents, lang, 0)}</span> {t.taggedDocs}</div>
-            <div className="brief-stat"><span className="mono" style={{ color: "var(--brand-2, #6ea8fe)" }}>{d.trending.length}</span> {t.companiesCovered}</div>
-          </div>
-        </div>
-      </section>
-
       {/* PORTFOLIO MONITOR — sample series, badged, clickable */}
       <section className="col-7 tpanel">
         <header className="tpanel-head">

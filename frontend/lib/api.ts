@@ -133,6 +133,8 @@ export type ResearchGroup = { doc_type: string; docs: NewsDoc[] };
 export type ResearchEntity = { ticker: string; name_ar: string; name_en: string; count: number };
 export type ResearchData = { query: string; answer: Answer; result_count: number; groups: ResearchGroup[]; entities: ResearchEntity[]; timeline: NewsDoc[] };
 
+type Lang = "ar" | "en";
+
 async function call<T>(path: string, init?: RequestInit): Promise<T> {
   const res = await fetch(path, {
     ...init,
@@ -144,6 +146,45 @@ async function call<T>(path: string, init?: RequestInit): Promise<T> {
     throw new Error(body?.error?.message ?? `${res.status} ${res.statusText}`);
   }
   return res.json() as Promise<T>;
+}
+
+// --- static mode (GitHub Pages): read baked JSON, no backend --------------------
+const STATIC = process.env.NEXT_PUBLIC_STATIC === "1";
+const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
+async function jget<T>(file: string): Promise<T> {
+  const res = await fetch(`${BASE}/data/${file}`, { cache: "force-cache" });
+  if (!res.ok) throw new Error(`static:${file} ${res.status}`);
+  return res.json() as Promise<T>;
+}
+
+const normQ = (q: string) => q.trim().toLowerCase().replace(/\s+/g, " ");
+const EMPTY_ANSWER: Answer = {
+  mode: "extractive", status: "below_threshold", text: null,
+  passages: [], citations: [], locale: "ar", threshold: 0,
+};
+
+let _searchIdx: Record<string, SearchResponse> | null = null;
+async function staticSearch(query: string): Promise<SearchResponse> {
+  if (!_searchIdx) _searchIdx = await jget<Record<string, SearchResponse>>("search-index.json");
+  return _searchIdx[normQ(query)] ?? { query, entity: null, answer: EMPTY_ANSWER, results: [] };
+}
+
+let _researchIdx: Record<string, ResearchData> | null = null;
+async function staticResearch(query: string): Promise<ResearchData> {
+  if (!_researchIdx) _researchIdx = await jget<Record<string, ResearchData>>("research-index.json");
+  return _researchIdx[normQ(query)] ?? { query, answer: EMPTY_ANSWER, result_count: 0, groups: [], entities: [], timeline: [] };
+}
+
+async function staticDmSend(id: number, msg: { body?: string; doc_id?: number }): Promise<DmThread> {
+  const thread = await jget<DmThread>(`dm-thread-${id}.json`);
+  if (msg.body && msg.body.trim()) {
+    thread.messages = [...thread.messages, {
+      id: Math.floor(Math.random() * 1e9), sender: "me", body: msg.body,
+      doc_id: msg.doc_id ?? null, created_at: Math.floor(Date.now() / 1000), document: null,
+    }];
+  }
+  return thread;
 }
 
 export type Persona = {
@@ -186,23 +227,32 @@ export type DmThreadSummary = {
 
 export const api = {
   search: (body: { query: string; k?: number; doc_type?: string; ticker?: string }) =>
-    call<SearchResponse>("/api/search", { method: "POST", body: JSON.stringify(body) }),
-  news: (symbol: string) =>
-    call<{ symbol: string; entity: Company | null; documents: NewsDoc[] }>(
-      `/api/news/${symbol}`,
-    ),
-  quote: (symbol: string) => call<Envelope<Record<string, unknown>>>(`/api/quote/${symbol}`),
-  health: () => call<Health>("/api/health"),
-  dashboard: () => call<Dashboard>("/api/dashboard"),
-  history: (symbol: string) => call<Series>(`/api/history/${symbol}`),
-  company: (symbol: string) => call<CompanyData>(`/api/company/${symbol}`),
-  recent: (limit = 6) => call<{ recent: RecentItem[] }>(`/api/recent?limit=${limit}`),
-  research: (query: string) => call<ResearchData>("/api/research", { method: "POST", body: JSON.stringify({ query, k: 24 }) }),
-  dmThreads: () => call<{ threads: DmThreadSummary[]; sample: boolean }>("/api/dm/threads"),
-  dmThread: (id: number) => call<DmThread & { sample: boolean }>(`/api/dm/threads/${id}`),
+    STATIC ? staticSearch(body.query)
+           : call<SearchResponse>("/api/search", { method: "POST", body: JSON.stringify(body) }),
+  news: (symbol: string, lang: Lang = "ar") =>
+    STATIC ? jget<{ symbol: string; entity: Company | null; documents: NewsDoc[] }>(`news-${symbol}-${lang}.json`)
+           : call<{ symbol: string; entity: Company | null; documents: NewsDoc[] }>(`/api/news/${symbol}?lang=${lang}`),
+  quote: (symbol: string) =>
+    STATIC ? jget<Envelope<Record<string, unknown>>>(`quote-${symbol}.json`)
+           : call<Envelope<Record<string, unknown>>>(`/api/quote/${symbol}`),
+  health: () => STATIC ? jget<Health>("health.json") : call<Health>("/api/health"),
+  dashboard: (lang: Lang = "ar") =>
+    STATIC ? jget<Dashboard>(`dashboard-${lang}.json`) : call<Dashboard>(`/api/dashboard?lang=${lang}`),
+  history: (symbol: string) =>
+    STATIC ? jget<Series>(`history-${symbol}.json`) : call<Series>(`/api/history/${symbol}`),
+  company: (symbol: string, lang: Lang = "ar") =>
+    STATIC ? jget<CompanyData>(`company-${symbol}-${lang}.json`) : call<CompanyData>(`/api/company/${symbol}?lang=${lang}`),
+  recent: (limit = 6, lang: Lang = "ar") =>
+    STATIC ? jget<{ recent: RecentItem[] }>(`recent-${lang}.json`) : call<{ recent: RecentItem[] }>(`/api/recent?limit=${limit}&lang=${lang}`),
+  research: (query: string) =>
+    STATIC ? staticResearch(query) : call<ResearchData>("/api/research", { method: "POST", body: JSON.stringify({ query, k: 24 }) }),
+  dmThreads: () =>
+    STATIC ? jget<{ threads: DmThreadSummary[]; sample: boolean }>("dm-threads.json")
+           : call<{ threads: DmThreadSummary[]; sample: boolean }>("/api/dm/threads"),
+  dmThread: (id: number) =>
+    STATIC ? jget<DmThread & { sample: boolean }>(`dm-thread-${id}.json`)
+           : call<DmThread & { sample: boolean }>(`/api/dm/threads/${id}`),
   dmSend: (id: number, body: { body?: string; doc_id?: number }) =>
-    call<DmThread>(`/api/dm/threads/${id}/messages`, {
-      method: "POST",
-      body: JSON.stringify(body),
-    }),
+    STATIC ? staticDmSend(id, body)
+           : call<DmThread>(`/api/dm/threads/${id}/messages`, { method: "POST", body: JSON.stringify(body) }),
 };

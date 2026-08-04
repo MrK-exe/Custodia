@@ -1,14 +1,15 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { api, type SearchResponse } from "@/lib/api";
+import { api, type SearchResponse, type Dashboard as DashData } from "@/lib/api";
 import { dict, SUGGESTIONS } from "@/lib/dict";
 import type { RecentItem } from "@/lib/api";
-import { docTitle, type Lang } from "@/lib/format";
+import { docTitle, formatNumber, nav, type Lang } from "@/lib/format";
 import AnswerCard from "./AnswerCard";
 import DocResults from "./DocResults";
 import EntityCard from "./EntityCard";
 import Dashboard from "./Dashboard";
+import MarketTicker from "./MarketTicker";
 
 function SearchIcon() {
   return (
@@ -27,12 +28,14 @@ export default function SearchPanel({ lang }: { lang: Lang }) {
   const [error, setError] = useState<string | null>(null);
   const [warm, setWarm] = useState(true);
   const [recent, setRecent] = useState<RecentItem[]>([]);
+  const [dash, setDash] = useState<DashData | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     inputRef.current?.focus();
     api.health().then((h) => setWarm(h.warm_up.state === "ready" || h.model_loaded)).catch(() => setWarm(true));
-    api.recent(6).then((r) => setRecent(r.recent)).catch(() => {});
+    api.recent(6, lang).then((r) => setRecent(r.recent)).catch(() => {});
+    api.dashboard(lang).then(setDash).catch(() => {});
   }, []);
 
   async function run(q: string) {
@@ -56,10 +59,6 @@ export default function SearchPanel({ lang }: { lang: Lang }) {
       {/* dark command hero */}
       <section className="hero-command">
         <div className="hero-inner">
-          <div className="command-label">
-            <span className="k">{t.command}</span>
-            <span className="h">{t.commandHint}</span>
-          </div>
           <form
             className="command-box"
             onSubmit={(e) => {
@@ -77,7 +76,6 @@ export default function SearchPanel({ lang }: { lang: Lang }) {
               maxLength={200}
             />
             <div className="actions">
-              <kbd className="kbd">⌘K</kbd>
               <button type="submit" className="ask-btn" disabled={loading || !query.trim()}>
                 <SearchIcon /> {loading ? t.searching : t.searchButton}
               </button>
@@ -91,7 +89,27 @@ export default function SearchPanel({ lang }: { lang: Lang }) {
               </button>
             ))}
           </div>
+
+          {/* TRACKED FOR YOU — horizontal strip, above the ticker */}
+          {dash && (
+            <div className="hero-tracked">
+              <span className="ht-lbl">{t.tracked}</span>
+              <span className="ht-stat">
+                <b className="mono pos">{formatNumber(dash.brief.total_documents, lang, 0)}</b> {t.docsIndexed}
+              </span>
+              <span className="ht-stat">
+                <b className="mono" style={{ color: "var(--amber)" }}>{formatNumber(dash.brief.tagged_documents, lang, 0)}</b> {t.taggedDocs}
+              </span>
+              <span className="ht-stat">
+                <b className="mono" style={{ color: "var(--brand-2, #6ea8fe)" }}>{dash.trending.length}</b> {t.companiesCovered}
+              </span>
+            </div>
+          )}
         </div>
+
+        {/* MARKET PULSE — near-full-width revolving banner; the split between the
+            dark search hero and the white analytics grid below it */}
+        {dash && <MarketTicker lang={lang} summary={t.pulseHeadline} items={dash.brief.latest} />}
       </section>
 
       <main className="term-main">
@@ -123,7 +141,7 @@ export default function SearchPanel({ lang }: { lang: Lang }) {
             <div className="col-12 resbar">
               <span className="mono" style={{ color: "var(--grey-mid)", fontSize: 12 }}>“{data.query}”</span>
               <a className="ask-btn" style={{ height: 30, textDecoration: "none" }}
-                 href={`/${lang}/research?q=${encodeURIComponent(data.query)}`}>
+                 href={nav(`/${lang}/research?q=${encodeURIComponent(data.query)}`)}>
                 {t.deepResearchBtn} ›
               </a>
             </div>

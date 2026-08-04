@@ -80,3 +80,10 @@ export function relativeTime(epochSeconds: number | null | undefined, lang: Lang
 export function docTitle(d: { title: string; title_en?: string | null }, lang: Lang): string {
   return lang === "en" && d.title_en ? d.title_en : d.title;
 }
+
+/** Prefix internal links with the deploy base path ("/Custodia" on GitHub Pages,
+ *  "" for local/dev). Raw <a> tags are NOT basePath-prefixed by Next. */
+const NAV_BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+export function nav(path: string): string {
+  return NAV_BASE + path;
+}

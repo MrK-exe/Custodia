@@ -180,9 +180,9 @@ def market():
 
 
 @app.get("/api/news/{symbol}")
-def news(symbol: str = SYMBOL, limit: int = Query(default=20, ge=1, le=50)):
+def news(symbol: str = SYMBOL, limit: int = Query(default=20, ge=1, le=50), lang: str = Query(default="ar")):
     with db.connect() as conn:
-        docs = db.documents_by_ticker(conn, symbol, limit=limit)
+        docs = db.documents_by_ticker(conn, symbol, limit=limit, lang=lang)
     return {"symbol": symbol, "entity": _entity(symbol), "documents": docs}
 
 
@@ -239,10 +239,10 @@ def dm_post(req: MessageRequest, thread_id: int = Path(ge=1)):
 # --- analytics (charts run on the sample series; every response says source) -----
 
 @app.get("/api/dashboard")
-def dashboard():
+def dashboard(lang: str = Query(default="ar")):
     """Splash dashboard: real brief/trending/calendar + sample-badged watchlist and
     sector heat. The frontend badges every sample-sourced panel."""
-    return market_analysis.dashboard()
+    return market_analysis.dashboard(lang)
 
 
 @app.get("/api/history/{symbol}")
@@ -259,7 +259,7 @@ def history(symbol: str = SYMBOL):
 
 
 @app.get("/api/company/{symbol}")
-def company(symbol: str = SYMBOL):
+def company(symbol: str = SYMBOL, lang: str = Query(default="ar")):
     """Everything about one ticker in one call: identity, best-effort cached quote,
     the sample price series, its real news feed, and the real corpus context
     (laws, mandates, ownership, geopolitics that mention it)."""
@@ -274,9 +274,9 @@ def company(symbol: str = SYMBOL):
         px = raw.get("price") or raw.get("last") or raw.get("close")
         anchor = px if isinstance(px, (int, float)) else None
     with db.connect() as conn:
-        news = db.documents_by_ticker(conn, symbol, limit=12)
+        news = db.documents_by_ticker(conn, symbol, limit=12, lang=lang)
         context = db.documents_by_ticker(
-            conn, symbol, limit=12,
+            conn, symbol, limit=12, lang=lang,
             exclude_types=("registry", "news", "disclosure"),
         )
     net_flow = None
@@ -296,8 +296,8 @@ def company(symbol: str = SYMBOL):
 
 
 @app.get("/api/recent")
-def recent(limit: int = Query(default=6, ge=1, le=20)):
-    return {"recent": research_analysis.recent(limit)}
+def recent(limit: int = Query(default=6, ge=1, le=20), lang: str = Query(default="ar")):
+    return {"recent": research_analysis.recent(limit, lang)}
 
 
 @app.post("/api/research")

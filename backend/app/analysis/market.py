@@ -125,16 +125,17 @@ def calendar(limit: int = 6) -> list[dict]:
     return [dict(r) for r in rows]
 
 
-def brief() -> dict:
+def brief(lang: str = "ar") -> dict:
     """REAL market pulse: counts and latest headlines. No generated prose."""
     with db.connect() as conn:
         total = conn.execute("SELECT COUNT(*) FROM documents").fetchone()[0]
         by_type = dict(conn.execute(
             "SELECT doc_type, COUNT(*) FROM documents GROUP BY doc_type"
         ).fetchall())
+        lang_clause = " AND title_en IS NOT NULL" if lang == "en" else " AND source != 'google_news_en'"
         latest = [dict(r) for r in conn.execute(
-            """SELECT id, title, title_en, doc_type, publisher, url, published_at, tickers FROM documents
-               WHERE doc_type != 'registry' ORDER BY published_at DESC LIMIT 5"""
+            f"""SELECT id, title, title_en, doc_type, publisher, url, published_at, tickers FROM documents
+               WHERE doc_type != 'registry'{lang_clause} ORDER BY published_at DESC LIMIT 8"""
         )]
         tagged = conn.execute(
             "SELECT COUNT(*) FROM documents WHERE tickers != '[]' AND doc_type != 'registry'"
@@ -149,9 +150,9 @@ def brief() -> dict:
     }
 
 
-def dashboard() -> dict:
+def dashboard(lang: str = "ar") -> dict:
     return {
-        "brief": brief(),
+        "brief": brief(lang),
         "watchlist": watchlist(),
         "sectors": sector_heat(),
         "trending": trending(),

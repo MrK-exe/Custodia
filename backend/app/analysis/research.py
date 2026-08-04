@@ -67,12 +67,13 @@ def research(query: str, k: int = 24) -> dict:
     }
 
 
-def recent(limit: int = 6) -> list[dict]:
+def recent(limit: int = 6, lang: str = "ar") -> list[dict]:
     """Latest real headlines (non-registry), newest first, for the splash chips."""
     with db.connect() as conn:
+        lang_clause = " AND title_en IS NOT NULL" if lang == "en" else " AND source != 'google_news_en'"
         rows = conn.execute(
-            """SELECT id, title, title_en, doc_type, url, published_at, tickers FROM documents
-               WHERE doc_type != 'registry' AND published_at IS NOT NULL
+            f"""SELECT id, title, title_en, doc_type, url, published_at, tickers FROM documents
+               WHERE doc_type != 'registry' AND published_at IS NOT NULL{lang_clause}
                ORDER BY published_at DESC LIMIT ?""",
             (limit,),
         ).fetchall()

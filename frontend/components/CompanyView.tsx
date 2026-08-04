@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { api, type CompanyData } from "@/lib/api";
 import { dict } from "@/lib/dict";
-import { formatNumber, formatPercent, type Lang, docTitle } from "@/lib/format";
+import { formatNumber, formatPercent, type Lang, docTitle, nav } from "@/lib/format";
 import { RangeChart } from "./Charts";
 import SignalPanel from "./SignalPanel";
 import YahooSummary from "./YahooSummary";
@@ -27,7 +27,7 @@ export default function CompanyView({ ticker, lang }: { ticker: string; lang: La
   useEffect(() => {
     setD(null);
     setError(null);
-    api.company(ticker).then(setD).catch((e) => setError(e instanceof Error ? e.message : String(e)));
+    api.company(ticker, lang).then(setD).catch((e) => setError(e instanceof Error ? e.message : String(e)));
   }, [ticker]);
 
   if (error) {
@@ -35,7 +35,7 @@ export default function CompanyView({ ticker, lang }: { ticker: string; lang: La
       <main className="term-main">
         <div className="col-12 tpanel"><div className="tpanel-body" style={{ padding: 16 }}>
           <span className="badge amber">{t.error}</span><p className="empty">{error}</p>
-          <a href={`/${lang}`}>{t.backToSearch}</a>
+          <a href={nav(`/${lang}`)}>{t.backToSearch}</a>
         </div></div>
       </main>
     );
@@ -73,7 +73,7 @@ export default function CompanyView({ ticker, lang }: { ticker: string; lang: La
       {/* header + live price */}
       <section className="col-12 tpanel priority">
         <header className="tpanel-head">
-          <a href={`/${lang}`} style={{ color: "var(--grey-light)", fontSize: 12 }}>‹ {t.backToSearch}</a>
+          <a href={nav(`/${lang}`)} style={{ color: "var(--grey-light)", fontSize: 12 }}>‹ {t.backToSearch}</a>
           <span className="mono" style={{ fontSize: 11, fontWeight: 600, marginInlineStart: 8 }}>{d.entity.ticker}</span>
           <h3 className="tpanel-title">{name}</h3>
           <span className="tpanel-sub">· {sector}</span>
